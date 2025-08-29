@@ -10,6 +10,7 @@ A collaborative repository for the **Level Up In Tech – August 2025 Black Pyth
 - [AWS Resources](#aws-resources)
 - [Dependencies](#dependencies)
 - [Usage Examples](#usage-examples)
+- [Testing](#testing)
 - [Contributing](#contributing)
 
 ## 🚀 Setup
@@ -150,6 +151,101 @@ aws lambda create-function --function-name list-buckets \
   --runtime python3.12 \
   --role arn:aws:iam::ACCOUNT:role/lambda-execution-role
 ```
+
+## 🧪 Testing
+
+This project includes comprehensive unit tests for all Python modules to ensure code quality and reliability.
+
+### Test Structure
+
+```
+tests/
+├── __init__.py
+├── unit/
+│   ├── __init__.py
+│   ├── test_hello_world.py          # Tests for hello_world.py
+│   ├── test_helpers.py              # Tests for helpers.py (AWS functions)
+│   ├── test_creating_instances.py   # Tests for creating_instances.py
+│   ├── test_listing_resources.py    # Tests for listing_resources.py
+│   └── test_lambda_function.py      # Tests for Lambda function
+└── run_tests.py                     # Test runner script
+```
+
+### Running Tests
+
+#### Install Testing Dependencies
+
+First, ensure all testing dependencies are installed:
+
+```bash
+pip install -r .\requirements.txt
+```
+
+#### Run All Tests
+
+```bash
+# Basic test run
+python run_tests.py
+
+# Verbose output
+python run_tests.py --verbose
+```
+
+#### Run Specific Test Modules
+
+```bash
+# Test a specific module
+python run_tests.py --module hello_world
+python run_tests.py --module helpers
+python run_tests.py --module lambda_function
+
+# List available test modules
+python run_tests.py --list
+```
+
+#### Run Tests with Coverage
+
+```bash
+# Generate coverage report
+python run_tests.py --coverage
+```
+
+This will generate:
+- Console coverage report
+- HTML coverage report in `htmlcov/` directory
+
+#### Alternative Test Runners
+
+You can also use standard Python unittest or pytest:
+
+```bash
+# Using unittest
+python -m unittest discover tests/unit
+
+# Using pytest (if installed)
+pytest tests/unit/
+
+# Using pytest with coverage
+pytest tests/unit/ --cov=. --cov-report=html
+```
+
+### Test Features
+
+- **Comprehensive Coverage**: Tests cover all functions and edge cases
+- **AWS Mocking**: Uses `moto` and `unittest.mock` to avoid actual AWS API calls
+- **Isolated Tests**: Each test is independent and doesn't affect others
+- **Multiple Scenarios**: Tests include success cases, edge cases, and error conditions
+- **Print Statement Verification**: Tests verify console output where applicable
+
+### Testing Dependencies
+
+The following packages are used for testing:
+
+- **`boto3`** - AWS SDK (already required for main functionality)
+- **`moto[s3,ec2]`** - AWS service mocking for testing
+- **`coverage`** - Code coverage measurement
+- **`pytest`** - Alternative test runner (optional)
+- **`pytest-cov`** - Coverage plugin for pytest (optional)
 
 ## 🤝 Contributing
 
