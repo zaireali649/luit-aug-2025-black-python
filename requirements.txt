@@ -1,0 +1,9 @@
+matplotlib
+pyfiglet
+boto3
+
+# Testing dependencies
+moto[s3,ec2]
+coverage
+pytest
+pytest-cov
