@@ -11,6 +11,7 @@ A collaborative repository for the **Level Up In Tech – August 2025 Black Pyth
 - [Dependencies](#dependencies)
 - [Usage Examples](#usage-examples)
 - [Testing](#testing)
+- [CI/CD](#cicd)
 - [Contributing](#contributing)
 
 ## 🚀 Setup
@@ -246,6 +247,52 @@ The following packages are used for testing:
 - **`coverage`** - Code coverage measurement
 - **`pytest`** - Alternative test runner (optional)
 - **`pytest-cov`** - Coverage plugin for pytest (optional)
+
+## 🚀 CI/CD
+
+This repository includes automated testing via GitHub Actions that runs on every pull request and push to main branches.
+
+### GitHub Workflow Features
+
+- **Automated Testing**: Runs the complete test suite using `run_tests.py`
+- **Multi-Version Support**: Tests against Python 3.8, 3.9, 3.10, 3.11, and 3.12
+- **Coverage Reporting**: Generates and uploads HTML coverage reports as artifacts
+- **PR Comments**: Posts test results and coverage information directly on pull requests
+- **Dependency Caching**: Speeds up builds by caching pip dependencies
+
+### Workflow Triggers
+
+The workflow runs automatically on:
+- **Pull Requests** to `main`, `master`, or `develop` branches
+- **Pushes** to `main` or `master` branches
+
+### Workflow Steps
+
+1. **Checkout Code**: Gets the latest code from the repository
+2. **Setup Python**: Configures the specified Python version
+3. **Cache Dependencies**: Caches pip packages for faster builds
+4. **Install Dependencies**: Installs all packages from `requirements.txt`
+5. **Run Tests**: Executes `python run_tests.py --verbose`
+6. **Generate Coverage**: Runs `python run_tests.py --coverage`
+7. **Upload Artifacts**: Saves HTML coverage reports (Python 3.11 only)
+8. **Comment on PR**: Posts test results on pull requests (Python 3.11 only)
+
+### Viewing Results
+
+- **Test Status**: Check the green/red status badge on your PR
+- **Detailed Logs**: Click on the workflow run to see detailed test output
+- **Coverage Report**: Download the `coverage-report` artifact for detailed coverage analysis
+- **PR Comments**: View automated test summaries posted directly on pull requests
+
+### Local vs CI Testing
+
+The CI workflow uses the same `run_tests.py` script you use locally, ensuring consistency between development and production testing environments.
+
+```bash
+# Same commands run in CI
+python run_tests.py --verbose
+python run_tests.py --coverage
+```
 
 ## 🤝 Contributing
 
