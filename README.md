@@ -1,5 +1,7 @@
 # luit-aug-2025-black-python
 
+[![Tests](https://github.com/OWNER/luit-aug-2025-black-python/actions/workflows/test.yml/badge.svg)](https://github.com/OWNER/luit-aug-2025-black-python/actions/workflows/test.yml)
+
 A collaborative repository for the **Level Up In Tech – August 2025 Black Python Cohort** to practice and grow Python skills through lessons, exercises, and projects.
 
 ## 📋 Table of Contents
@@ -255,7 +257,7 @@ This repository includes automated testing via GitHub Actions that runs on every
 ### GitHub Workflow Features
 
 - **Automated Testing**: Runs the complete test suite using `run_tests.py`
-- **Multi-Version Support**: Tests against Python 3.8, 3.9, 3.10, 3.11, and 3.12
+- **Python 3.12**: Tests using the latest stable Python version
 - **Coverage Reporting**: Generates and uploads HTML coverage reports as artifacts
 - **PR Comments**: Posts test results and coverage information directly on pull requests
 - **Dependency Caching**: Speeds up builds by caching pip dependencies
@@ -274,8 +276,8 @@ The workflow runs automatically on:
 4. **Install Dependencies**: Installs all packages from `requirements.txt`
 5. **Run Tests**: Executes `python run_tests.py --verbose`
 6. **Generate Coverage**: Runs `python run_tests.py --coverage`
-7. **Upload Artifacts**: Saves HTML coverage reports (Python 3.11 only)
-8. **Comment on PR**: Posts test results on pull requests (Python 3.11 only)
+7. **Upload Artifacts**: Saves HTML coverage reports as downloadable artifacts
+8. **Comment on PR**: Posts test results on pull requests
 
 ### Viewing Results
 
